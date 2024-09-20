@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Chuyển đổi đơn vị</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+.converter {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+}
+</style>
+</head>
+<body>
+    <h1>Chuyển đổi đơn vị</h1>
+    
+    <div class="converter">
+        <label for="celsius">Đổi ℃ qua ℉:</label>
+        <input type="number" id="celsius" placeholder="°C">
+        <button id="CtoF">Đổi</button>
+        <p id="fahrenheit"></p>
+    </div>
+    <div class="converter">
+        <label for="inch">Dổi Inches qua Cm:</label>
+        <input type="number" id="inch" placeholder="inches">
+        <button id="InchToCm">Đổi</button>
+        <p id="cm"></p>
+    </div>
+    <div class="converter">
+        <label for="foot">Đổi Feet qua Cm:</label>
+        <input type="number" id="foot" placeholder="feet">
+        <button id="FootToCm">Đổi</button>
+        <p id="cmFoot"></p>
+    </div>
+    <div class="converter">
+        <label for="miles">Đổi Miles qua Km:</label>
+        <input type="number" id="miles" placeholder="miles">
+        <button id="MilesToKm">Đổi</button>
+        <p id="km"></p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#CtoF').click(function() {
+                let celsius = $('#celsius').val();
+                let fahrenheit = (celsius * 1.8) + 32;
+                $('#fahrenheit').text(fahrenheit + ' °F');
+            });
+        
+            $('#InchToCm').click(function() {
+                let inch = $('#inch').val();
+                let cm = inch * 2.54;
+                $('#cm').text(cm + ' cm');
+            });
+        
+            $('#FootToCm').click(function() {
+                let foot = $('#foot').val();
+                let cm = foot * 30.48;
+                $('#cmFoot').text(cm + ' cm');
+            });
+        
+            $('#MilesToKm').click(function() {
+                let miles = $('#miles').val();
+                let km = miles * 1.60934;
+                $('#km').text(km + ' km');
+            });
+        });
+    </script>
+</body>
+</html>
+
